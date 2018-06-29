@@ -2,7 +2,9 @@ fetch('blocks-citation-graph.json')
   .then(res => res.json())
   .then(data => {
     const N = 300
-    const Graph = new ThreeForceGraph().graphData(data)
+    const Graph = new ThreeForceGraph()
+      .graphData(data)
+      .nodeAutoColorBy(node => node.user)
 
     // Setup renderer
     const renderer = new THREE.WebGLRenderer()
